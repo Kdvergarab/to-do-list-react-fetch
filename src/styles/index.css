@@ -1,12 +1,25 @@
-
-/* 
-
-    You can write your own styles here...
+.borde{
+    background-color: rgba(187, 243, 210, 0.239);
+display: flex;
+justify-content: space-around;
+margin: 5px;
+border: 1px solid gray;}
+.cerrar{border: none;
+border-radius:150%;
+background-color: rgba(173, 186, 197, 0.609);
+text-align: center;
+padding: 3px;
+margin: 4px;
+text-align: center;
+}
+.boton{border: 1px solid rgba(127, 255, 212, 0.404);
+    background-color: rgba(218, 224, 230, 0.39);
     
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+    margin-right: 500px;
+    margin-left: 500px;
+}
 
-*/
+.cajas{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,24 +1,47 @@
-import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import React, { useState } from "react";
 
 //create your first component
 const Home = () => {
+	const [lista, setLista] = useState([""]);
+
 	return (
-		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="cajas">
+			<h1 className="text-center mt-5"> TO DO LIST</h1>
+
+			<button
+				className=" boton"
+				onClick={(e) => {
+					fetch("https://jsonplaceholder.typicode.com/users")
+						.then((e) => {
+							return e.json();
+						})
+						.then((e) => {
+							setLista(e);
+						});
+				}}>
+				Traer datos de la ApI
+			</button>
+			{lista.map((e, index) => {
+				return (
+					<div className="container border borde" key={index}>
+						<div key={index}>{e.name}</div>
+						<div key={index}>{e.email}</div>
+						<a href={e.website} key={index}>
+							{e.username}
+						</a>
+						<br />
+						<button
+							className="cerrar"
+							onClick={() => {
+								let nuevaLista = [...lista];
+								nuevaLista.splice(index, 1);
+								setLista(nuevaLista);
+							}}>
+							x
+						</button>
+					</div>
+				);
+			})}
 		</div>
 	);
 };
